@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Services\Auth\LoginService;
 use App\Services\Auth\LoginServiceInterface;
+use App\Services\Checklist\ChecklistService;
+use App\Services\Checklist\ChecklistServiceInterface;
 use App\Services\User\UserService;
 use App\Services\User\UserServiceInterface;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             LoginServiceInterface::class,
             LoginService::class
+        );
+
+        $this->app->singleton(
+            ChecklistServiceInterface::class,
+            ChecklistService::class
         );
     }
 

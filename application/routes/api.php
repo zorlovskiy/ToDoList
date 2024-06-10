@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Auth\LoginController;
+use App\Http\Controllers\API\Checklist\ChecklistCreateController;
 use App\Http\Controllers\API\Register\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', LoginController::class)->name('login');
 
 Route::post('/register', RegisterController::class)->name('register');
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::prefix('checklists')->name('checklist.')->group(function () {
+        Route::post('/', ChecklistCreateController::class)->name('create');
+    });
+
+});
